@@ -22,7 +22,7 @@ st.write("Sur la base de ces informations, vous avez besoin de ", round(besoin /
 
 st.header("2. Caractéristiques des batteries")
 
-capacite_batterie = st.number_input("Capacité des batteries", value = 1000, min_value=0, step = 100)
+capacite_batterie = st.number_input("Capacité des batteries", value = 2400, min_value=0, step = 100)
 unite_capacite = st.selectbox("En quelle unité est exprimée cette capacité ?", ('Wh', 'Ah'))
 
 
@@ -30,7 +30,7 @@ if unite_capacite == "Ah":
     tension_batterie_reponse = st.selectbox('Quelle est la tension de sortie des batteries (V)', ('12 V', '110 V', '220 V'))
     tension = tension_batterie_reponse.split(' ')[0]
 
-profondeur_de_decharge = st.number_input("Jusqu'à quel % de décharge utiliserez-vous vos batteries ? (de 100 % jusqu'à ... % ?)", value = 10, min_value=0, max_value=50)
+profondeur_de_decharge = st.number_input("Jusqu'à quel % de décharge utiliserez-vous vos batteries ? (de 100 % jusqu'à ... % ?)", value = 30, min_value=0, max_value=50)
 
 if unite_capacite == "Wh":
     watts_batterie = capacite_batterie
@@ -43,10 +43,15 @@ st.write("Chaque batterie a une capacité utilisable de ", puissance_reelle / 10
 st.header("Conclusion")
 
 nb_batteries = besoin / puissance_reelle
-st.write("Vous avez donc besoin de batteries", nb_batteries, "ayant les caractéristiques mentionnées.")
+st.write("Vous avez donc besoin de batteries", round(nb_batteries,1), "ayant les caractéristiques mentionnées.")
+
 st.write("Voici les modèles qui correspondent à ce besoin :")
 
-st.write("Ecoflow : Capacité de la batterie:  3600Wh , tension 220V")
+url = 'https://www.amazon.fr/gp/search?ie=UTF8&tag=a5c-21&linkCode=ur2&linkId=26a68e7b1312ba2a10ca7c5e77304dc6&camp=1642&creative=6746&index=appliances&keywords=générateur%20solaire%20portable%20ecoflow/'
+
+st.write(f"* Les [batteries solaires]({url})")
+
+
 # # Calculations
 # amh_heures = consommation_quotienne / tension_batterie
 # total_ampere_heures = amh_heures * 2 * (1 + margin / 100)
