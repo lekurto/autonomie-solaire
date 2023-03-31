@@ -37,7 +37,7 @@ if unite_capacite == "Wh":
 elif unite_capacite == "Ah":
     watts_batterie = tension * capacite_batterie
 
-puissance_reelle = watts_batterie * (100- profondeur_de_decharge) / 100
+puissance_reelle = watts_batterie * (100 - profondeur_de_decharge) / 100
 st.write("Chaque batterie a une capacité utilisable de ", puissance_reelle / 1000, "kiloWatt heures")
 
 st.header("Conclusion")
